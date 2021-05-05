@@ -6,12 +6,13 @@ using CodeMonkey.Utils;
 
 public class GameHandler : MonoBehaviour {
 
-    void Start() {
+    private LevelGrid levelGrid;
+    
+    private void Start() {
         Debug.Log("GameHandler.Start");
 
-        //GameObject snakeHeadObject = new GameObject();
-        //SpriteRenderer snakeSpriteRenderer = snakeHeadObject.AddComponent<SpriteRenderer>();
-        //snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
+        levelGrid = new LevelGrid(20, 20);
+
     }
 
     void Update()
