@@ -9,11 +9,9 @@ public class GameHandler : MonoBehaviour {
     void Start() {
         Debug.Log("GameHandler.Start");
 
-        int number = 0;
-        FunctionPeriodic.Create(() => {
-            CMDebug.TextPopupMouse("Ding!" + number);
-            number++;
-        }, .3f);
+        GameObject snakeHeadObject = new GameObject();
+        SpriteRenderer snakeSpriteRenderer = snakeHeadObject.AddComponent<SpriteRenderer>();
+        snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
     }
 
     void Update()
