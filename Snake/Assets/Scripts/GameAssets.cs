@@ -13,17 +13,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey;
-using CodeMonkey.Utils;
 
-public class GameHandler : MonoBehaviour {
+public class GameAssets : MonoBehaviour
+{
 
-    private void Start() {
-        Debug.Log("GameHandler.Start");
+    public static GameAssets i;
 
-        GameObject snakeHeadGameObject = new GameObject();
-        SpriteRenderer snakeSpriteRenderer = snakeHeadGameObject.AddComponent<SpriteRenderer>();
-        snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
+    private void Awake() {
+        i = this;
     }
+
+    public Sprite snakeHeadSprite;
 
 }
