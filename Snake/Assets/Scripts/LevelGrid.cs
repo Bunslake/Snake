@@ -35,13 +35,17 @@ public class LevelGrid
         foodGameObject.transform.position = new Vector3(foodGridPosition.x, foodGridPosition.y);
     }
 
-    public void SnakeMoved(Vector2Int snakeGridPosition)
+    public bool TrySnakeEatFood(Vector2Int snakeGridPosition)
     {
         if (snakeGridPosition == foodGridPosition)
         {
             Object.Destroy(foodGameObject);
             SpawnFood();
-            CMDebug.TextPopupMouse("Snake Ate food");
+            return true;
+            
+        } else
+        {
+            return false;
         }
     }
 }
