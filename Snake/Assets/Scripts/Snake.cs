@@ -116,18 +116,22 @@ public class Snake : MonoBehaviour
             {
                 snakeMovePositionList.RemoveAt(snakeMovePositionList.Count - 1);
             }
+            UpdateSnakeBodyParts();
 
-            /*for (int i = 0; i < snakeMovePositionList.Count; i++)
+            foreach (SnakeBodyPart snakeBodyPart in snakeBodyPartList)
             {
-                Vector2Int snakeMovePosition = snakeMovePositionList[i];
-                World_Sprite worldSprite = World_Sprite.Create(new Vector3(snakeMovePosition.x, snakeMovePosition.y), Vector3.one * .5f, Color.white);
-                FunctionTimer.Create(worldSprite.DestroySelf, gridMoveTimerMax);
-            }*/
+                Vector2Int snakeBodyPartGridPosition = snakeBodyPart.GetGridPosition();
+                if (gridPosition == snakeBodyPartGridPosition)
+                {
+                    //Game Over!
+                    CMDebug.TextPopup("DEAD!", transform.position);
+                }
+            }
 
+           
             transform.position = new Vector3(gridPosition.x, gridPosition.y);
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirectionVector) - 90);
 
-            UpdateSnakeBodyParts();
         }
 
     }
@@ -254,6 +258,11 @@ public class Snake : MonoBehaviour
 
             }
             transform.eulerAngles = new Vector3(0, 0, angle);
+        }
+
+        public Vector2Int GetGridPosition()
+        {
+            return snakeMovePosition.GetGridPosition();
         }
     }
 
