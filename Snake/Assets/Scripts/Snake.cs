@@ -13,6 +13,7 @@ public class Snake : MonoBehaviour
     private LevelGrid levelGrid;
     private int snakeBodySize;
     private List<Vector2Int> snakeMovePositionList;
+    private List<Transform> snakeBodyTransformList;
 
     public void Setup(LevelGrid levelGrid)
     {
@@ -28,6 +29,8 @@ public class Snake : MonoBehaviour
 
         snakeMovePositionList = new List<Vector2Int>();
         snakeBodySize = 0;
+
+        snakeBodyTransformList = new List<Transform>();
     }
     private void Update(){
         HandleInput();
@@ -87,6 +90,7 @@ public class Snake : MonoBehaviour
             {
                 //Snake ate food, grow body
                 snakeBodySize++;
+                CreateSnakeBody();
             }
 
             if (snakeMovePositionList.Count >= snakeBodySize + 1)
@@ -105,6 +109,12 @@ public class Snake : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection) - 90);
         }
 
+    }
+    private void CreateSnakeBody()
+    {
+        GameObject snakeBodyGameObject = new GameObject("snakeBody", typeof(SpriteRenderer));
+        snakeBodyGameObject.GetComponent<SpriteRenderer>().sprite = GameAssets.i.snakeBodySprite;
+        snakeBodyTransformList.Add(snakeBodyGameObject.transform);
     }
     private float GetAngleFromVector(Vector2Int dir)
     {
