@@ -13,6 +13,14 @@ public class Snake : MonoBehaviour
         Up,
         Down
     }
+
+    private enum State
+    {
+        Alive,
+        Dead
+    }
+
+    private State state;
     private Direction gridMoveDirection;
     private Vector2Int gridPosition;
     private float gridMoveTimer;
@@ -38,11 +46,20 @@ public class Snake : MonoBehaviour
         snakeBodySize = 0;
 
         snakeBodyPartList = new List<SnakeBodyPart>();
+
+        state = State.Alive;
     }
     private void Update(){
-        HandleInput();
-        HandleGridMovement();
-
+        switch (state)
+        {
+        case State.Alive:
+        
+            HandleInput();
+            HandleGridMovement();
+            break;
+        case State.Dead:
+            break;
+        }
     }
     private void HandleInput()
     {
@@ -125,6 +142,7 @@ public class Snake : MonoBehaviour
                 {
                     //Game Over!
                     CMDebug.TextPopup("DEAD!", transform.position);
+                    state = State.Dead;
                 }
             }
 
