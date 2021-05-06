@@ -186,22 +186,69 @@ public class Snake : MonoBehaviour
             switch (snakeMovePosition.GetDirection())
             {
                 default:
-                case Direction.Up:
+                case Direction.Up: // currently going Up
                     angle = 0;
+                    switch (snakeMovePosition.GetPreviousDirection())
+                    {
+                        default:
+                            angle = 0; 
+                            break;
+                        case Direction.Left: // Previously was going Left
+                            angle = 0 + 45;
+                            transform.position += new Vector3(.2f, .2f);
+                            break;
+                        case Direction.Right: // Previously was going Right
+                            angle = 0 - 45;
+                            transform.position += new Vector3(-.2f, .2f);
+                            break;
+                    }
                     break;
-                case Direction.Down:
-                    angle = 180;
+                case Direction.Down: // Currently going Down
+                    switch (snakeMovePosition.GetPreviousDirection())
+                    {
+                    default:
+                        angle = 180; 
+                        break;
+                    case Direction.Left: // Previously was going Left
+                        angle = 180 - 45;
+                        transform.position += new Vector3(.2f, -.2f);
+                        break;
+                    case Direction.Right: // Previously was going Right
+                        angle = 180 + 45;
+                        transform.position += new Vector3(-.2f, -.2f);
+                        break;
+                    }
                     break;
-                case Direction.Left:
-                    angle = -90;
+                case Direction.Left: // Currently going to the Left
+                    switch (snakeMovePosition.GetPreviousDirection())
+                    {
+                    default:
+                        angle = +90; 
+                        break;
+                    case Direction.Down: // Previously was going Down
+                        angle = 180 - 45;
+                        transform.position += new Vector3(-.2f, .2f);
+                        break;
+                    case Direction.Up: // Previously was going Up
+                        angle = 45;
+                        transform.position += new Vector3(-.2f, -.2f);
+                        break;
+                    }
                     break;
                 case Direction.Right: // Currently going to the Right
                     switch (snakeMovePosition.GetPreviousDirection())
                     {
-                        default: 
-                            angle = 90; break;
-                        case Direction.Down: // Previously was going Down
-                            angle = 45; break;
+                    default: 
+                        angle = -90; 
+                        break;
+                    case Direction.Down: // Previously was going Down
+                        angle = 180 + 45;
+                        transform.position += new Vector3(.2f, .2f);
+                        break;
+                    case Direction.Up: // Previously was going Up
+                        angle = -45;
+                        transform.position += new Vector3(.2f, -.2f);
+                        break;
                     }
                     break;
 
