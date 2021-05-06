@@ -22,6 +22,7 @@ public class LevelGrid
         this.snake = snake;
         
         SpawnFood();
+        GameHandler.AddScore();
     }
     private void SpawnFood()
     {
