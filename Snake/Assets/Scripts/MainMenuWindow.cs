@@ -22,6 +22,8 @@ public class MainMenuWindow : MonoBehaviour
 
         transform.Find("mainSub").Find("howToPlayBtn").GetComponent<Button_UI>().ClickFunc = () => ShowSub(Sub.HowToPlay);
 
+        transform.Find("howToPlaySub").Find("backBtn").GetComponent<Button_UI>().ClickFunc = () => ShowSub(Sub.Main);
+
         ShowSub(Sub.Main);
 
     }
