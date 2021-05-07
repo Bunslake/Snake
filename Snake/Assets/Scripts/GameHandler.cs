@@ -27,14 +27,8 @@ public class GameHandler : MonoBehaviour {
 
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);
-
-        CMDebug.ButtonUI(Vector2.zero, "Reload scene", () =>
-        {
-            Loader.Load(Loader.Scene.GameScene);
-        });
-
     }
-
+       
     private static void InitializeStatic()
     {
         score = 0;
@@ -50,4 +44,8 @@ public class GameHandler : MonoBehaviour {
         score += 100; 
     }
 
+    public static void SnakeDied()
+    {
+        GameOverWindow.ShowStatic();
+    }
 }
