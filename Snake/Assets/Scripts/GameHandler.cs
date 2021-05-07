@@ -17,6 +17,7 @@ public class GameHandler : MonoBehaviour {
     private void Awake()
     {
         instance = this;
+        InitializeStatic();
     }
     
     private void Start() {
@@ -32,6 +33,11 @@ public class GameHandler : MonoBehaviour {
             Loader.Load(Loader.Scene.GameScene);
         });
 
+    }
+
+    private static void InitializeStatic()
+    {
+        score = 0;
     }
 
     public static int GetScore()
