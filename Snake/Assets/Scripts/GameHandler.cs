@@ -27,6 +27,11 @@ public class GameHandler : MonoBehaviour {
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);
 
+        CMDebug.ButtonUI(Vector2.zero, "Reload scene", () =>
+        {
+            Loader.Load(Loader.Scene.GameScene);
+        });
+
     }
 
     public static int GetScore()

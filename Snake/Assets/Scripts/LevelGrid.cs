@@ -22,7 +22,6 @@ public class LevelGrid
         this.snake = snake;
         
         SpawnFood();
-        GameHandler.AddScore();
     }
     private void SpawnFood()
     {
@@ -42,6 +41,7 @@ public class LevelGrid
         {
             Object.Destroy(foodGameObject);
             SpawnFood();
+            GameHandler.AddScore();
             return true;
             
         } else
