@@ -99,6 +99,8 @@ public class Snake : MonoBehaviour
         {
             gridMoveTimer -= gridMoveTimerMax;
 
+            SoundManager.PlaySound();
+
 
             SnakeMovePosition previousSnakeMovePosition = null;
             if (snakeMovePositionList.Count > 0)
