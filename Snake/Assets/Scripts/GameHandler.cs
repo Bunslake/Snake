@@ -47,8 +47,9 @@ public class GameHandler : MonoBehaviour {
 
     public static void SnakeDied()
     {
-        Score.TrySetNewHighscore();
-        GameOverWindow.ShowStatic();
+        bool isNewHighscore = Score.TrySetNewHighscore();
+        GameOverWindow.ShowStatic(isNewHighscore);
+        ScoreWindow.HideStatic();
     }
     public static void ResumeGame()
     {
