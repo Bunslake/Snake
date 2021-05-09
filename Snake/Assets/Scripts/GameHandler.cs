@@ -18,10 +18,15 @@ public class GameHandler : MonoBehaviour {
     {
         instance = this;
         InitializeStatic();
+        Time.timeScale = 1f;
+
+        //PlayerPrefs.SetInt("highscore", 100);
+       // PlayerPrefs.Save();
+        Debug.Log(PlayerPrefs.GetInt("highscore"));
     }
     
     private void Start() {
-        Debug.Log("GameHandler.Start");
+        Debug.Log("GameHandler.Start\n");
 
         levelGrid = new LevelGrid(20, 20);
 
