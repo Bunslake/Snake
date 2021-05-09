@@ -33,5 +33,11 @@ public static class SoundManager
         Debug.LogError("Sound" + sound + " not found!");
         return null;
     }
+
+    public static void AddButtonSounds(this Button_UI buttonUI)
+    {
+        buttonUI.MouseDownOnceFunc += () => SoundManager.PlaySound(Sound.ButtonOver);
+        buttonUI.ClickFunc += () => SoundManager.PlaySound(Sound.ButtonClick);
+    }
     
 }
