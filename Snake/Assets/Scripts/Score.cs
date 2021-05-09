@@ -8,4 +8,19 @@ public static class Score
     {
         return PlayerPrefs.GetInt("highscore", 0);
     }
+
+    public static bool TrySetNewHighscore(int score)
+    {
+        int highscore = GetHighscore();
+        if (score > highscore)
+        {
+            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.Save();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

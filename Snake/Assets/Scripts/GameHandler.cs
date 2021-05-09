@@ -20,9 +20,7 @@ public class GameHandler : MonoBehaviour {
         InitializeStatic();
         Time.timeScale = 1f;
 
-        //PlayerPrefs.SetInt("highscore", 100);
-       // PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetInt("highscore"));
+        Score.TrySetNewHighscore(200);
     }
     
     private void Start() {
