@@ -17,8 +17,6 @@ public class GameHandler : MonoBehaviour {
         instance = this;
         Score.InitializeStatic();
         Time.timeScale = 1f;
-
-        Score.TrySetNewHighscore(200);
     }
     
     private void Start() {

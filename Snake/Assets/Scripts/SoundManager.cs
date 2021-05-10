@@ -36,7 +36,7 @@ public static class SoundManager
 
     public static void AddButtonSounds(this Button_UI buttonUI)
     {
-        buttonUI.MouseDownOnceFunc += () => SoundManager.PlaySound(Sound.ButtonOver);
+        buttonUI.MouseOverOnceFunc += () => SoundManager.PlaySound(Sound.ButtonOver);
         buttonUI.ClickFunc += () => SoundManager.PlaySound(Sound.ButtonClick);
     }
     
