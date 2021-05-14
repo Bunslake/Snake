@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: decoration
+    uniqueID: 457327631
+    locked: 0
   - name: Over
     uniqueID: 1236557671
     locked: 0
